@@ -9,6 +9,10 @@ payload = {
   'note': "This is Bio", # Bio
   'website': "t.me/z_0_g", # Url
   'location': "" # Location 
+  
+  # -- Update Profile and Cover --
+  # 'avatar': 'data:image/jpg;base64,/', 
+  # 'header': 'data:image/jpg;base64,/',  
 }
 
 headers = {
