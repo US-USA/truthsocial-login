@@ -1,7 +1,17 @@
 # 🚀 TruthSocial API Toolkit
 
-> Simple Python tools for Truth Social API  
-> 🔐 Login • 🔎 Lookup • ✏️ Update Profile
+> Simple & lightweight Python tools for interacting with the Truth Social API  
+> 🔐 Authenticate • 🔎 Lookup Users • ✏️ Update Profile
+
+---
+
+## 📦 Features
+
+- 🔐 OAuth2 Login (access token)
+- 🔎 User lookup by username
+- ✏️ Profile editing (name, bio, etc.)
+- ⚡ Fast & minimal setup
+- 📄 Clean JSON output
 
 ---
 
@@ -9,23 +19,25 @@
 
 ### 🔐 Login  
 [![Open Login](https://img.shields.io/badge/Open-login.py-blue?style=for-the-badge&logo=python)](https://github.com/US-USA/truthsocial-login/blob/master/login.py)
-
+> Authenticate and retrieve your access token.
 ---
 
 ### 🔎 User Lookup  
 [![Open Lookup](https://img.shields.io/badge/Open-truthsocial_lookup.py-blue?style=for-the-badge&logo=python)](https://github.com/US-USA/truthsocial-login/blob/master/truthsocial_lookup.py)
-
+> Get public account information by username.
 ---
 
 ### ✏️ Update Profile  
 [![Open Update](https://img.shields.io/badge/Open-update_profile.py-blue?style=for-the-badge&logo=python)](https://github.com/US-USA/truthsocial-login/blob/master/update_profile.py)
-
+> Update display name, bio, website, and location.
 ---
 
 ## ⚙️ Requirements
 
-- Python 3.x  
-- cloudscraper  
+- 🐍 Python 3.x  
+- ☁️ cloudscraper  
+
+Install dependency:
 
 ```bash
 pip install cloudscraper
