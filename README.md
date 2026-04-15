@@ -10,6 +10,7 @@
 - 🔐 OAuth2 Login (access token)
 - 🔎 User lookup by username
 - ✏️ Profile editing (name, bio, etc.)
+- 📄 Get Posts
 - ⚡ Fast & minimal setup
 - 📄 Clean JSON output
 
