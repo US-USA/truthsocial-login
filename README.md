@@ -1,7 +1,7 @@
 # 🚀 TruthSocial API Toolkit
 
 > Simple & lightweight Python tools for interacting with the Truth Social API  
-> 🔐 Authenticate • 🔎 Lookup Users • ✏️ Update Profile
+> 🔐 Authenticate • 🔎 Lookup Users • ✏️ Update Profile • 📄 Get Posts
 
 ---
 
