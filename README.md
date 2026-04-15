@@ -32,6 +32,11 @@
 > Update display name, bio, website, and location.
 ---
 
+### 📄 Get Posts
+[![Open Update](https://img.shields.io/badge/Open-get_posts.py-blue?style=for-the-badge&logo=python)](https://github.com/US-USA/truthsocial-login/blob/master/get_posts.py)
+> Fetch user posts with pagination, including media, content, and account info.
+---
+
 ## ⚙️ Requirements
 
 - 🐍 Python 3.x  
@@ -41,3 +46,4 @@ Install dependency:
 
 ```bash
 pip install cloudscraper
+
