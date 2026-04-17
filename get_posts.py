@@ -75,9 +75,9 @@ while True:
         print("📄 Content:", content if content else None)
         print("⌚ Posted:", format_time(created_at))
         
-        print(f"🔁 ReTruths: {reblogs_count:,}")
-        print(f"❤️ Likes: {likes_count:,}")
-        print(f"💬 Replies: {replies_count:,}")
+        print(f"🔁 ReTruths: {reblogs_count}")
+        print(f"❤️ Likes: {likes_count}")
+        print(f"💬 Replies: {replies_count}")
 
         media = post.get("media_attachments", [])
         if media:
