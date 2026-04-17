@@ -88,7 +88,8 @@ while True:
         else:
             print("🟥 Media: None")
 
-    input("Next.. ")
+    if data:
+    	input("Next.. ")
 
     if not data:
         break
