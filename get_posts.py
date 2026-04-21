@@ -3,6 +3,10 @@ from datetime import datetime
 
 requests = cloudscraper.create_scraper()
 
+
+url = "https://truthsocial.com/api/v1/accounts/107780257626128497/statuses"  # Trump User ID
+
+
 def format_time(iso_time_str):
     if not iso_time_str:
         return "Unknown time"
@@ -11,8 +15,6 @@ def format_time(iso_time_str):
         return dt.strftime("%B %d, %Y at %I:%M %p")
     except:
         return iso_time_str
-        
-url = "https://truthsocial.com/api/v1/accounts/107780257626128497/statuses"  # Trump User ID
 
 params = {
     'page': "1",
@@ -32,46 +34,63 @@ headers = {
 
 max_id = None
 
+response = requests.get(url, params={}, headers=headers)
+data = response.json()
+
+if "error" in data:
+	print("Error:", data.get("error"))
+	exit()
+else:
+	print("👤 Profile:")
+	acc = data[0]["account"]
+	print("username:", acc.get("username"))
+	print("display_name:", acc.get("display_name"))
+	print("avatar:", acc.get("avatar"))
+	print("header:", acc.get("header"))
+	print("created_at:", acc.get("created_at"))
+	print("followers_count:", acc.get("followers_count"))
+	print("following_count:", acc.get("following_count"))
+	print("statuses_count:", acc.get("statuses_count"))
+	print("\n")
+	print("👇 Posts:")
+        
 while True:
     params["max_id"] = max_id
     response = requests.get(url, params=params, headers=headers)
     data = response.json()
-
-    # print(json.dumps(data, indent=2, ensure_ascii=False)) 
-
-    if data:
-        print("👤 Profile:")
-        acc = data[0]["account"]
-        print("username:", acc.get("username"))
-        print("display_name:", acc.get("display_name"))
-        print("avatar:", acc.get("avatar"))
-        print("header:", acc.get("header"))
-        print("created_at:", acc.get("created_at"))
-        print("followers_count:", acc.get("followers_count"))
-        print("following_count:", acc.get("following_count"))
-        print("statuses_count:", acc.get("statuses_count"))
-        
-        print("\n")
-        print("👇 Posts:")
+    
+    # print(json.dumps(data, indent=2, ensure_ascii=False))            
 
     for post in data:
         print("---------------------")
         
         is_retruth = post.get("reblog") is not None
         if is_retruth:
-            content = post["reblog"].get("content")
-            created_at = post["reblog"].get("created_at")
+            content = post.get("content")
+            created_at = post.get("created_at")
+
+            reblog = post.get("reblog")
+            account = reblog.get("account")
+            media = reblog.get("media_attachments", [])
+
+            display_name = account.get("display_name", {})
+            username = account.get("username")
+            created_at = post.get("created_at")
+            content = post["reblog"].get("content")           
             reblogs_count = post["reblog"].get("reblogs_count", 0)
             likes_count = post["reblog"].get("favourites_count", post["reblog"].get("upvotes_count", 0))
             replies_count = post["reblog"].get("replies_count", 0)
             print("🔁 ReTruthed:", acc.get("display_name"), "ReTruthed")
+            print("👤 Name:", display_name)   
+            print("👤 username:", username)    
         else:
             content = post.get("content")
             created_at = post.get("created_at")
+            media = post.get("media_attachments", [])
+            
             reblogs_count = post.get("reblogs_count", 0)
             likes_count = post.get("favourites_count", post.get("upvotes_count", 0))
-            replies_count = post.get("replies_count", 0)
-
+            replies_count = post.get("replies_count", 0) 
         print("📄 Content:", content if content else None)
         print("⌚ Posted:", format_time(created_at))
         
@@ -79,7 +98,8 @@ while True:
         print(f"❤️ Likes: {likes_count}")
         print(f"💬 Replies: {replies_count}")
 
-        media = post.get("media_attachments", [])
+        # print(media)
+        # exit()
         if media:
             for m in media:
                 print("🟥 Media type:", m.get("type"))
